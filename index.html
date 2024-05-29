@@ -13,6 +13,36 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+    // Function to disable left-click
+    function disableLeftClick(e) {
+        if (e.button === 0) {  // 0 is the button value for the left mouse button
+            e.preventDefault();
+        }
+    }
+
+    // Function to disable right-click
+    function disableRightClick(e) {
+        e.preventDefault();
+    }
+
+    // Apply the no-pointer-events class to the body
+    document.body.style.pointerEvents = 'none';
+
+    // Allow pointer events for specific elements
+    const exceptions = document.querySelectorAll('a, .allow-click');
+    exceptions.forEach(element => {
+        element.style.pointerEvents = 'auto';
+    });
+
+    // Disable left-click on the document
+    document.addEventListener('mousedown', disableLeftClick);
+
+    // Disable right-click on the document
+    document.addEventListener('contextmenu', disableRightClick);
+});
+</script>
     
     <style>
     body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
